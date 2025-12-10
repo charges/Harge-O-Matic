@@ -213,59 +213,52 @@ const ArticleCard = ({ article }) => {
       return (
         <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50">
 <header className="bg-white shadow-sm sticky top-0 z-10">
-  <div className="max-w-4xl mx-auto px-4 py-3">
+  <div className="max-w-4xl mx-auto px-4 py-2">
 
-    {/* --- TOP ROW --- */}
-    <div className="flex items-center justify-between w-full">
-
-      {/* Left cluster: icon + cached badge */}
-      <div className="flex items-center gap-3">
-        {/* Square container so height matches buttons */}
-        <div className="flex items-center justify-center w-10 h-10">
-          <BookOpen className="text-blue-600 w-6 h-6" />
-        </div>
-
+    {/* TOP ROW */}
+    <div className="flex items-center justify-between gap-3">
+      {/* Left: book + cached */}
+      <div className="flex items-center gap-2">
+        <BookOpen size={22} className="text-blue-600 shrink-0" />
         {isCached && (
-          <span className="inline-flex items-center h-8 text-xs bg-green-100 text-green-700 px-2 rounded whitespace-nowrap">
+          <span className="inline-flex items-center h-7 px-2 text-xs bg-green-100 text-green-700 rounded">
             Cached
           </span>
         )}
       </div>
 
-      {/* Right cluster: Saved + bigger Refresh */}
-      <div className="flex items-center gap-3">
-
-        {/* SAVED BUTTON — fixed height, centered content */}
+      {/* Right: Saved + Refresh */}
+      <div className="flex items-center gap-2">
         <button
-          onClick={() => setActiveView(activeView === 'feed' ? 'saved' : 'feed')}
-          className="flex items-center justify-center gap-2 h-10 px-3 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors"
+          onClick={() =>
+            setActiveView(activeView === 'feed' ? 'saved' : 'feed')
+          }
+          className="inline-flex items-center justify-center gap-1.5 h-8 px-3 text-sm text-gray-700 hover:bg-gray-100 rounded-lg transition-colors"
         >
           <Bookmark size={18} />
           <span>Saved ({savedArticles.length})</span>
         </button>
 
-        {/* REFRESH BUTTON — same height */}
         <button
           onClick={() => fetchArticles(selectedTopic, true)}
           disabled={loading}
-          className="flex items-center justify-center gap-2 h-10 px-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50"
+          className="inline-flex items-center justify-center gap-1.5 h-8 px-3 text-sm bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50"
         >
           <RefreshCw
             size={18}
-            className={loading ? "animate-spin" : ""}
+            className={loading ? 'animate-spin' : ''}
           />
           <span>Refresh</span>
         </button>
       </div>
     </div>
 
-    {/* --- SECOND ROW: TITLE --- */}
+    {/* SECOND ROW: TITLE */}
     <div className="mt-2">
       <h1 className="text-3xl font-bold text-gray-900">
         Harge-O-Matic 1.0
       </h1>
     </div>
-
   </div>
 </header>
           
