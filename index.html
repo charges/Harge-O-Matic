@@ -212,28 +212,54 @@ const ArticleCard = ({ article }) => {
 
       return (
         <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50">
-          <header className="bg-white shadow-sm sticky top-0 z-10">
-            <div className="max-w-4xl mx-auto px-4 py-4 flex justify-between items-center">
-              <div className="flex items-center gap-3">
-                <BookOpen size={28} className="text-blue-600" />
-                <h1 className="text-2xl font-bold text-gray-900">Harge-O-Matic 1.0</h1>
-                {isCached && <span className="text-xs bg-green-100 text-green-700 px-2 py-1 rounded">Cached</span>}
-              </div>
-              <div className="flex items-center gap-4">
-                <button onClick={() => setActiveView(activeView === 'feed' ? 'saved' : 'feed')}
-                        className="flex items-center gap-2 px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors">
-                  <Bookmark size={18} />
-                  <span className="hidden sm:inline">Saved ({savedArticles.length})</span>
-                </button>
-                <button onClick={() => fetchArticles(selectedTopic, true)}
-                        disabled={loading}
-                        className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50">
-                  <RefreshCw size={18} className={loading ? 'animate-spin' : ''} />
-                  <span className="hidden sm:inline">Refresh</span>
-                </button>
-              </div>
-            </div>
-          </header>
+<header className="bg-white shadow-sm sticky top-0 z-10">
+  <div className="max-w-4xl mx-auto px-4 py-4">
+    {/* Top row: icon + cached + saved + refresh */}
+    <div className="flex items-center justify-between gap-3">
+      <div className="flex items-center gap-2">
+        <BookOpen size={24} className="text-blue-600" />
+        {isCached && (
+          <span className="text-xs bg-green-100 text-green-700 px-2 py-1 rounded">
+            Cached
+          </span>
+        )}
+      </div>
+
+      <div className="flex items-center gap-3">
+        <button
+          onClick={() =>
+            setActiveView(activeView === 'feed' ? 'saved' : 'feed')
+          }
+          className="flex items-center gap-2 px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors"
+        >
+          <Bookmark size={18} />
+          <span className="hidden sm:inline">
+            Saved ({savedArticles.length})
+          </span>
+        </button>
+
+        <button
+          onClick={() => fetchArticles(selectedTopic, true)}
+          disabled={loading}
+          className="flex items-center gap-2 px-3 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50"
+        >
+          <RefreshCw
+            size={18}
+            className={loading ? 'animate-spin' : ''}
+          />
+          <span className="hidden sm:inline">Refresh</span>
+        </button>
+      </div>
+    </div>
+
+    {/* Second row: title only */}
+    <div className="mt-2">
+      <h1 className="text-2xl sm:text-3xl font-bold leading-tight text-gray-900">
+        Harge-O-Matic 1.0
+      </h1>
+    </div>
+  </div>
+</header>
 
           <main className="max-w-4xl mx-auto px-4 py-8">
             {activeView === 'feed' ? (
