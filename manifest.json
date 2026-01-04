@@ -1,27 +1,16 @@
 {
   "name": "Harge-O-Matic",
-  "short_name": "Harge-O-Matic",
+  "short_name": "Harge-O",
   "description": "Your personalized humanities + history article feed.",
   "start_url": "/Harge-O-Matic/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#1e40af",
   "icons": [
-    {
-      "src": "icons/icon-192.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    },
-    {
-      "src": "icons/icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png"
-    },
-    {
-      "src": "icons/maskable-icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "maskable"
-    }
+    "theme_color": "#2563eb",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png" }
   ]
 }
+
